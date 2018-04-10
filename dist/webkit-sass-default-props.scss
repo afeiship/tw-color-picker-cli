@@ -1,15 +1,6 @@
 /* flex-align start*/
-$map-flex-align:(
-    flex-start,
-    flex-end,
-    center,
-    normal
-);
+$list-flex-align:( flex-start, flex-end, center, normal );
 /* flex-align end*/
 /* vertical-align start*/
-$map-vertical-align:(
-    top,
-    middle,
-    bottom
-);
+$list-vertical-align:( top, middle, bottom );
 /* vertical-align end*/
