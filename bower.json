@@ -1,0 +1,24 @@
+{
+  "name": "webkit-sass-default-props",
+  "description": "Default props for webkit toolkit.",
+  "main": "dist/webkit-sass-default-props.scss",
+  "authors": [
+    "afei"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "next"
+  ],
+  "homepage": "https://github.com/afeiship/webkit-sass-default-props",
+  "moduleType": [
+    "amd"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "src"
+  ]
+}
