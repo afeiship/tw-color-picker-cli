@@ -1,13 +1,11 @@
 (function() {
-
   'use strict';
 
   var path = require('path');
   var gulp = require('gulp');
-  var argv = require('yargs').argv;
   var fs = require('fs');
   var $ = require('gulp-load-plugins')({
-    pattern: ['gulp-*', 'gulp.*', 'del']
+    pattern: ['gulp-*', 'gulp.*', 'del'],
   });
 
   //import
@@ -15,7 +13,5 @@
     require('./build/' + file);
   });
 
-
-  gulp.task('default',['build']);
-
-}());
+  gulp.task('default', gulp.series(['clean', 'styles', 'docs']));
+})();
