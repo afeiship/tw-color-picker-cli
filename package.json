@@ -1,32 +1,29 @@
 {
-  "name": "@feizheng/webkit-sass-default-props",
+  "name": "tw-color-picker-cli",
+  "private": true,
   "version": "1.0.0",
-  "description": "Default props for webkit toolkit.",
-  "homepage": "https://github.com/afeiship/webkit-sass-default-props",
-  "author": {
-    "name": "afei",
-    "email": "1290657123@qq.com"
+  "description": "TODO: CLI_DECRIPTION",
+  "type": "module",
+  "files": ["bin"],
+  "bin": {
+    "tcpc": "./bin/index.js"
   },
   "scripts": {
-    "build": "gulp",
-    "start": "node server.js"
+    "release": "release-it",
+    "prepare": "husky install",
+    "pretty": "prettier --write bin"
   },
-  "main": "dist/index.scss",
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": ["npm run pretty"]
+  },
+  "keywords": ["tw-color-picker-cli", "javascript", "templates"],
   "license": "MIT",
   "devDependencies": {
-    "@feizheng/gulp-pkg-header": "^1.0.2",
-    "@feizheng/rake-git": "^1.2.1",
-    "autoprefixer": "^9.7.4",
-    "del": "^5.1.0",
-    "express": "^4.17.1",
-    "gulp": "^4.0.2",
-    "gulp-concat": "^2.6.1",
-    "gulp-load-plugins": "^2.0.2",
-    "gulp-postcss": "^8.0.0",
-    "gulp-rename": "^2.0.0",
-    "gulp-sass": "^4.0.2"
+    "husky": "^9.0.6",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.2.4"
   },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
+  "dependencies": {
+    "commander": "^11.1.0"
   }
 }

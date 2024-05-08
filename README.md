@@ -1,18 +1,15 @@
-# webkit-sass-default-props
-> Default props for webkit toolkit.
+# tw-color-picker-cli
+> Cli templates for javascript.
 
-## documentation
-- https://afeiship.github.io/webkit-sass-default-props/
+## template
+```sh
+# clone the template
+git clone git@github.com:aric-tpls/tw-color-picker-cli.git
+mvg
 
-## installation
-```shell
-npm i @feizheng/webkit-sass-default-props
+# or use tiged
+tiged git@github.com:aric-tpls/tw-color-picker-cli.git --mode=git --disable-cache
+
+# replace the template
+rifc
 ```
-
-## usage
-```scss
-@import '~@feizheng/webkit-sass-default-props';
-```
-
-## resources
-+ https://github.com/afeiship/generator-webkit-sassui
