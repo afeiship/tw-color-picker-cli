@@ -2,7 +2,7 @@
   "name": "tw-color-picker-cli",
   "private": true,
   "version": "1.0.0",
-  "description": "TODO: CLI_DECRIPTION",
+  "description": "Color class picker for tailwind css.",
   "type": "module",
   "files": ["bin"],
   "bin": {
@@ -16,7 +16,7 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": ["npm run pretty"]
   },
-  "keywords": ["tw-color-picker-cli", "javascript", "templates"],
+  "keywords": ["tw-color-picker-cli", "javascript", "templates", "tcpc"],
   "license": "MIT",
   "devDependencies": {
     "husky": "^9.0.6",
