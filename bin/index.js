@@ -2,22 +2,26 @@
 
 import { Command, Option } from 'commander';
 import { createRequire } from 'module';
+import path from 'path';
 import { flatten } from 'safe-flat';
 import clipboard from 'clipboardy';
-import { deltaE, clearCache } from 'color-delta-e';
+import resolveConfig from 'tailwindcss/resolveConfig.js';
+
+import { deltaE } from 'color-delta-e';
 import colors from './colors.js';
+import '@jswork/next-deep-assign';
 
 const __dirname = new URL('../', import.meta.url).pathname;
 const require = createRequire(__dirname);
 const pkg = require('./package.json');
 const program = new Command();
-const twColors = flatten(colors, '-');
 
 program.version(pkg.version);
 program
   .addOption(new Option('-v, --verbose', 'show verbose log'))
   .addOption(new Option('-t, --is-text', 'create text color css class'))
   .addOption(new Option('-b, --is-background', 'create background color css class'))
+  .addOption(new Option('-c, --config <string>', 'path to tailwind.config.js'))
   .parse(process.argv);
 
 /**
@@ -49,16 +53,27 @@ class CliApp {
    * @returns {*}
    */
   getMinItem(items) {
-    const min = Math.min(...items.map((item) => item.deltaE || 100));
+    const min = Math.min(...items.map((item) => item.deltaE));
     return items.find((item) => item.deltaE === min);
   }
 
+  getAppColors() {
+    const { config } = this.opts;
+    const cwd = process.cwd();
+    const fullpath = path.resolve(cwd, config || './tailwind.config.js');
+    const tailwindConfig = require(fullpath);
+    const fullConfig = resolveConfig(tailwindConfig);
+    return fullConfig.theme.colors;
+  }
+
   run() {
-    const { isText, isBackground } = this.opts;
+    const { isText, isBackground, config } = this.opts;
     const [input] = this.args;
     const results = [];
-    for (let key in twColors) {
-      const value = twColors[key];
+    const appColors = this.getAppColors();
+    const currentColors = flatten(nx.deepAssign({}, colors, appColors), '-');
+    for (let key in currentColors) {
+      const value = currentColors[key];
       const res = deltaE(input, value);
       results.push({ key, value, deltaE: res });
     }
