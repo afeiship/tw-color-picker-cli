@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+// https://stackoverflow.com/questions/73489852/how-to-get-default-config-of-tailwind-css-2
+
 import { Command, Option } from 'commander';
 import { createRequire } from 'module';
 import path from 'path';

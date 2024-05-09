@@ -6,6 +6,7 @@
 $ tcpc "#E6E8F5" -b # bg-slate-200
 $ tcpc "#E6E8F5" -t # text-slate-200
 $ tcpc "#E6E8F5"    # slate-200
+$ tcpc "#3E3E7C" -b -c './tailwind.config.cjs' -v # with tailwind config file
 ```
 
 ## usage
