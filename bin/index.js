@@ -14,7 +14,11 @@ const program = new Command();
 const twColors = flatten(colors, '-');
 
 program.version(pkg.version);
-program.addOption(new Option('-v, --verbose', 'show verbose log')).parse(process.argv);
+program
+  .addOption(new Option('-v, --verbose', 'show verbose log'))
+  .addOption(new Option('-t, --is-text', 'create text color css class'))
+  .addOption(new Option('-b, --is-background', 'create background color css class'))
+  .parse(process.argv);
 
 /**
  * @help: tcpc -h
@@ -22,6 +26,13 @@ program.addOption(new Option('-v, --verbose', 'show verbose log')).parse(process
  */
 
 class CliApp {
+  get prefix() {
+    const { isText, isBackground } = this.opts;
+    if (isText) return `text-`;
+    if (isBackground) return `bg-`;
+    return '';
+  }
+
   constructor() {
     this.args = program.args;
     this.opts = program.opts();
@@ -43,7 +54,7 @@ class CliApp {
   }
 
   run() {
-    // const { input } = this.opts;
+    const { isText, isBackground } = this.opts;
     const [input] = this.args;
     const results = [];
     for (let key in twColors) {
@@ -52,7 +63,8 @@ class CliApp {
       results.push({ key, value, deltaE: res });
     }
     const min = this.getMinItem(results);
-    clipboard.writeSync(min.key);
+    const cpTarget = `${this.prefix}${min.key}`;
+    clipboard.writeSync(cpTarget);
     this.log('min: ', min);
     console.log('✅ Successfully copied to clipboard!');
   }
