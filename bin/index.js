@@ -70,7 +70,8 @@ class CliApp {
     const [input] = this.args;
     const results = [];
     const appColors = this.getAppColors();
-    const currentColors = flatten(nx.deepAssign({}, colors, appColors), '-');
+    const calcColors = nx.deepAssign(null, colors, appColors);
+    const currentColors = flatten(calcColors, '-');
     for (let key in currentColors) {
       const value = currentColors[key];
       const res = deltaE(input, value);
