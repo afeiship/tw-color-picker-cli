@@ -15,9 +15,10 @@ $ tcpc -h
 Usage: tcpc [options]
 
 Options:
-  -V, --version        output the version number
-  -v, --verbose        show verbose log
-  -t, --is-text        create text color css class
-  -b, --is-background  create background color css class
-  -h, --help           display help for command
+  -V, --version          output the version number
+  -v, --verbose          show verbose log
+  -t, --is-text          create text color css class
+  -b, --is-background    create background color css class
+  -c, --config <string>  path to tailwind.config.js
+  -h, --help             display help for command
 ```
