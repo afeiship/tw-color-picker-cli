@@ -34,6 +34,9 @@
   },
   "dependencies": {
     "@jswork/next": "^1.2.2",
-    "commander": "^11.1.0"
+    "clipboardy": "^4.0.0",
+    "color-delta-e": "^1.3.0",
+    "commander": "^11.1.0",
+    "safe-flat": "^2.1.0"
   }
 }
