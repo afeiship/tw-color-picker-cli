@@ -1,3 +1,4 @@
+// https://github.com/tailwindlabs/tailwindcss/blob/v3.4.3/src/public/colors.js
 export default {
   current: 'currentColor',
   transparent: 'transparent',

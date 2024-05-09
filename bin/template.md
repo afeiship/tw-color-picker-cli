@@ -1,17 +1,11 @@
-# js-cli
-> Cli templates for javascript.
+# tw-color-picker-cli
+> Color class picker for tailwind css.
 
-## template
-```sh
-# clone the template
-git clone git@github.com:aric-tpls/js-cli.git
-mvg
-
-# or use tiged
-tiged git@github.com:aric-tpls/js-cli.git --mode=git --disable-cache
-
-# replace the template
-rifc
+## getting started
+```shell
+$ tcpc "#E6E8F5" -b # bg-slate-200
+$ tcpc "#E6E8F5" -t # text-slate-200
+$ tcpc "#E6E8F5"    # slate-200
 ```
 
 ## usage
