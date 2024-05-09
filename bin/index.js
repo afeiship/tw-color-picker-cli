@@ -15,6 +15,7 @@ const __dirname = new URL('../', import.meta.url).pathname;
 const require = createRequire(__dirname);
 const pkg = require('./package.json');
 const program = new Command();
+const cwd = process.cwd();
 
 program.version(pkg.version);
 program
@@ -59,15 +60,13 @@ class CliApp {
 
   getAppColors() {
     const { config } = this.opts;
-    const cwd = process.cwd();
-    const fullpath = path.resolve(cwd, config || './tailwind.config.js');
-    const tailwindConfig = require(fullpath);
+    const cfg = path.resolve(cwd, config || './tailwind.config.js');
+    const tailwindConfig = require(cfg);
     const fullConfig = resolveConfig(tailwindConfig);
     return fullConfig.theme.colors;
   }
 
   run() {
-    const { isText, isBackground, config } = this.opts;
     const [input] = this.args;
     const results = [];
     const appColors = this.getAppColors();
