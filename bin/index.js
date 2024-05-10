@@ -5,12 +5,12 @@
 import { Command, Option } from 'commander';
 import { createRequire } from 'module';
 import path from 'path';
+import fs from 'fs';
 import { flatten } from 'safe-flat';
 import clipboard from 'clipboardy';
 import resolveConfig from 'tailwindcss/resolveConfig.js';
-
-import { deltaE } from 'color-delta-e';
 import colors from './colors.js';
+import { deltaE } from 'color-delta-e';
 import '@jswork/next-deep-assign';
 
 const __dirname = new URL('../', import.meta.url).pathname;
@@ -63,6 +63,7 @@ class CliApp {
   getAppColors() {
     const { config } = this.opts;
     const cfg = path.resolve(cwd, config || './tailwind.config.js');
+    if (!fs.existsSync(cfg)) return {};
     const tailwindConfig = require(cfg);
     const fullConfig = resolveConfig(tailwindConfig);
     return fullConfig.theme.colors;
